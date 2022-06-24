@@ -1,5 +1,5 @@
 <template>
-        <div>
+        <div class="bg_primary flex-grow-1">
             <SongCard/>
         </div>
 </template>
@@ -36,5 +36,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/variables';
 
+.bg_primary {
+    background-color: $bg-primary;
+}
 </style>
