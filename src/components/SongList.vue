@@ -1,6 +1,12 @@
 <template>
         <div class="bg_primary flex-grow-1">
-            <SongCard/>
+            <div class="container p-4">
+                <div class="row row-cols-5">
+                    <div class="col" v-for="song in SongsList" :key="song.author">
+                        <SongCard :info="song"></SongCard>
+                    </div>
+                </div>
+            </div>
         </div>
 </template>
 
@@ -15,7 +21,7 @@ export default {
     data() {
         return {
             apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
-            songList: [],
+            songsList: [],
         }
     },
 
@@ -23,12 +29,12 @@ export default {
         getSongs() {
             axios.get(this.apiURL)
                 .then((resp) => {
-                    this.songList = resp.response;
+                    this.songsList = resp.data.response;
                 })
         },
     },
 
-    created() {
+    mounted() {
         this.getSongs();
     },
     
