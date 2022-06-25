@@ -1,8 +1,14 @@
 <template>
         <div class="bg_primary flex-grow-1">
             <div class="container px-5 mt-5">
+                <div class="text-end mb-5">
+                    <select name="" id="genreSelect" v-model="SelectedGenre" class="rounded py-1" style="width: 100px;">
+                        <option selected value="">Genere</option>
+                        <option :value="genre" v-for="(genre,id) in GenresList" :key="id">{{genre}}</option>
+                    </select>
+                </div>
                 <div class="row row-cols-5 gx-5">
-                    <div class="col mb-4" v-for="song in SongsList" :key="song.author">
+                    <div class="col mb-4" v-for="song in filterAlbums" :key="song.author">
                         <SongCard :info="song"></SongCard>
                     </div>
                 </div>
@@ -22,6 +28,20 @@ export default {
         return {
             apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
             SongsList: [],
+            GenresList: [],
+            SelectedGenre: '',
+        }
+    },
+    
+    computed: {
+        filterAlbums() {
+            const filteredAlbums = [];
+            this.SongsList.forEach(song => {
+                if (song.genre.includes(this.SelectedGenre)) {
+                    filteredAlbums.push(song);
+                }
+            });
+            return filteredAlbums;
         }
     },
 
@@ -30,6 +50,12 @@ export default {
             axios.get(this.apiURL)
                 .then((resp) => {
                     this.SongsList = resp.data.response;
+                    //creo la lista di generi
+                    this.SongsList.forEach(song => {
+                        if (!this.GenresList.includes(song.genre)) {
+                            this.GenresList.push(song.genre);
+                        }
+                    });
                 })
         },
     },
