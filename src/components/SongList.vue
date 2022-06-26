@@ -1,21 +1,21 @@
 <template>
         <div class="bg_primary flex-grow-1">
             <div class="container px-5 mt-5">
-                <div class="d-flex justify-content-between mb-5">
-                    <div>
-                        <select name="" id="authorSelect" v-model="SelectedAuthor" class="rounded py-1 select_style">
+                <div class="row mb-5">
+                    <div class="col">
+                        <select name="" id="authorSelect" v-model="SelectedAuthor" class="rounded py-1 select_style w-100">
                             <option selected value="">Artista</option>
                             <option :value="author" v-for="(author,id) in AuthorList" :key="id">{{author}}</option>
                         </select>
                     </div>
-                    <div>
-                        <select name="" id="genreSelect" v-model="SelectedGenre" class="rounded py-1 select_style">
+                    <div class="col">
+                        <select name="" id="genreSelect" v-model="SelectedGenre" class="rounded py-1 select_style w-100">
                             <option selected value="">Genere</option>
                             <option :value="genre" v-for="(genre,id) in GenresList" :key="id">{{genre}}</option>
                         </select>
                     </div>
                 </div>
-                <div class="row row-cols-5 gx-5">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gx-5">
                     <div class="col mb-4" v-for="song in filterAlbums" :key="song.author">
                         <SongCard :info="song"></SongCard>
                     </div>
@@ -90,7 +90,6 @@ export default {
     background-color: $bg-primary;
 }
 .select_style {
-    width: 200px;
     background-color: $bg-secondary;
     color: white;
 }
