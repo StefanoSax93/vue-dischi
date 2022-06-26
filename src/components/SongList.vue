@@ -3,13 +3,13 @@
             <div class="container px-5 mt-5">
                 <div class="d-flex justify-content-between mb-5">
                     <div>
-                        <select name="" id="authorSelect" v-model="SelectedAuthor" class="rounded py-1" style="width: 100px;">
+                        <select name="" id="authorSelect" v-model="SelectedAuthor" class="rounded py-1 select_style">
                             <option selected value="">Artista</option>
                             <option :value="author" v-for="(author,id) in AuthorList" :key="id">{{author}}</option>
                         </select>
                     </div>
                     <div>
-                        <select name="" id="genreSelect" v-model="SelectedGenre" class="rounded py-1" style="width: 100px;">
+                        <select name="" id="genreSelect" v-model="SelectedGenre" class="rounded py-1 select_style">
                             <option selected value="">Genere</option>
                             <option :value="genre" v-for="(genre,id) in GenresList" :key="id">{{genre}}</option>
                         </select>
@@ -88,5 +88,10 @@ export default {
 
 .bg_primary {
     background-color: $bg-primary;
+}
+.select_style {
+    width: 200px;
+    background-color: $bg-secondary;
+    color: white;
 }
 </style>
