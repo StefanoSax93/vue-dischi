@@ -1,22 +1,19 @@
 <template>
-        <div class="loader bg_primary text-white text-center pt-4" :class="{hidden : show == false}">
+        <div v-if="loading" class="loader bg_primary text-white text-center pt-4">
             <div class="spinner-border"></div>
         </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            show: true,
-        }
-    },
+import {state} from '../../store';
 
-    created() {
-        setTimeout(() => {
-            this.show = false;
-        }, 200);
-    },
+export default {
+    
+    computed: {
+        loading() {
+            return state.loading;
+        }
+    }
 }
 </script>
 

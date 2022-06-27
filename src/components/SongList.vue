@@ -40,6 +40,7 @@ export default {
 
     methods: {
         getSongs() {
+            state.loading = true;
             axios.get(this.apiURL)
                 .then((resp) => {
                     this.SongsList = resp.data.response;
@@ -50,6 +51,8 @@ export default {
                     //creo la lista degli autori
                     state.listaAutori = this.listaAutori();
                     console.log(state.listaAutori);
+
+                    state.loading=false;
                 })
         },
 
