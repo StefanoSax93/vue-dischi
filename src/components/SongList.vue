@@ -13,7 +13,7 @@
 <script>
 import axios from 'axios';
 import SongCard from './SongCard.vue';
-import {state} from '../../store';
+import {state} from '../store';
 
 export default {
     name: 'SongList',

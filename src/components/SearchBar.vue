@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {state} from '../../store';
+import {state} from '../store';
 
 export default {
     name: 'SearchBar',
